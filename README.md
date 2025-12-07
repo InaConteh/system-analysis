@@ -1,4 +1,4 @@
-# LionSport Football Agency Management System
+# Pinacle Football Agency Management System
 
 A dynamic web application for managing a football agency's player directory, contracts, and recruiting. Built with PHP, MySQL, CSS (Vanilla), and JavaScript.
 
