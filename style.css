@@ -46,9 +46,16 @@ a {
 }
 
 .logo {
-  font-size: 1.2em;
-  font-weight: bold;
-  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+}
+.logo img {
+  height: 60px; /* Adjust based on navbar height */
+  width: auto;
+  transition: transform 0.3s ease;
+}
+.logo:hover img {
+    transform: scale(1.05);
 }
 .nav-links {
   list-style: none;
@@ -93,20 +100,6 @@ a {
 .nav-links .active-link a::after {
   width: 100%;
 }
-
-/* --- Animations --- */
-.animate-on-scroll {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.animate-on-scroll.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Optional: Stagger delay for groups */
 .delay-100 {
   transition-delay: 0.1s;
 }
@@ -137,6 +130,22 @@ a {
 }
 .cta-button:hover {
   background-color: #00386e;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+.cta-button.animate-pulse {
+    animation: pulse 2s infinite;
+}
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(253, 185, 19, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(253, 185, 19, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(253, 185, 19, 0);
+    }
 }
 .home-container,
 .players-directory-container {
@@ -153,7 +162,7 @@ a {
   justify-content: center;
 }
 .hero-overlay {
-  background-color: rgba(0, 0, 0, 0.4);
+  background: linear-gradient(135deg, rgba(0, 76, 153, 0.85), rgba(0, 0, 0, 0.6));
   width: 100%;
   height: 100%;
   display: flex;
@@ -161,11 +170,14 @@ a {
   align-items: center;
   justify-content: center;
   padding: 30px 0;
+  backdrop-filter: blur(2px); /* Subtle blur for modern feel */
 }
 .hero-overlay h1 {
   color: var(--text-light);
-  font-size: 2em;
+  font-size: 3em; /* Larger text */
   text-align: center;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Pop text */
+  margin-bottom: 20px;
 }
 
 .expertise-section {
@@ -185,6 +197,11 @@ a {
   padding: 20px;
   border: 1px solid #eee;
   border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.expertise-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 .expertise-card .icon {
   font-size: 2em;
