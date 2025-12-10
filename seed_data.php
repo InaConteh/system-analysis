@@ -1,5 +1,5 @@
 <?php
-include 'db_connect.php';
+include 'includes/db_connect.php';
 
 // disable foreign key checks
 $conn->query("SET foreign_key_checks = 0");

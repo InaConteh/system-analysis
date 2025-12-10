@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'db_connect.php';
+include 'includes/db_connect.php';
 
 // Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
@@ -34,7 +34,7 @@ $result = $conn->query($sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Players Directory | Football Agency</title>
-    <link rel="stylesheet" href="style.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="css/style.css?v=<?php echo time(); ?>">
 
 </head>
 
@@ -112,8 +112,8 @@ $result = $conn->query($sql);
         </section>
     </main>
 
-    <?php include 'footer.php'; ?>
-    <script src="main.js"></script>
+    <?php include 'includes/footer.php'; ?>
+    <script src="js/main.js"></script>
 </body>
 
 </html>
