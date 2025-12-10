@@ -27,4 +27,34 @@ document.addEventListener("DOMContentLoaded", () => {
             navbar.classList.remove('scrolled');
         }
     });
+
+    // --- Tab Navigation ---
+    const tabs = document.querySelectorAll('.tab');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            // Remove active class from all tabs
+            tabs.forEach(t => t.classList.remove('active'));
+            // Add active class to clicked tab
+            tab.classList.add('active');
+
+            // Hide all tab contents
+            tabContents.forEach(content => {
+                content.style.display = 'none';
+                content.classList.remove('active');
+            });
+
+            // Show target tab content
+            const targetId = tab.getAttribute('data-target');
+            if (targetId) {
+                const targetContent = document.getElementById(targetId);
+                if (targetContent) {
+                    targetContent.style.display = 'block';
+                    // Trigger reflow or small timeout to allow animation if needed, but display block is key
+                    targetContent.classList.add('active');
+                }
+            }
+        });
+    });
 });

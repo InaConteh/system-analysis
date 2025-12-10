@@ -7,7 +7,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    $role = 'user'; // Default role
+    $role = isset($_POST['role']) ? $_POST['role'] : 'user';
+
+    // Validate role
+    $allowed_roles = ['user', 'manager', 'agent'];
+    if (!in_array($role, $allowed_roles)) {
+        $role = 'user';
+    }
 
     $sql = "INSERT INTO users (username, email, password, role) VALUES ('$username', '$email', '$password', '$role')";
 
@@ -98,6 +104,15 @@ $conn->close();
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="role">Role</label>
+                <select id="role" name="role" required class="form-control"
+                    style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                    <option value="user">User</option>
+                    <option value="manager">Manager</option>
+                    <option value="agent">Agent</option>
+                </select>
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
