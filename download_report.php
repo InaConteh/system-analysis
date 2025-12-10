@@ -12,7 +12,7 @@ if ($id) {
 
     if ($player) {
         $filename = "player_report_" . str_replace(' ', '_', $player['name']) . ".txt";
-        $content = "FOOTBALL AGENCY - PLAYER REPORT\n";
+        $content = "GRASS ROOT FOOTBALL AGENCY - PLAYER REPORT\n";
         $content .= "================================\n\n";
         $content .= "Name: " . $player['name'] . "\n";
         $content .= "Club: " . $player['club'] . "\n";
@@ -24,7 +24,7 @@ if ($id) {
         }
         $content .= "Contract Start: " . ($player['contract_start'] ? date("d/m/Y", strtotime($player['contract_start'])) : '--') . "\n";
         $content .= "Contract End: " . ($player['contract_end'] ? date("d/m/Y", strtotime($player['contract_end'])) : '--') . "\n";
-        $content .= "Agent: Football Agency\n";
+        $content .= "Agent: Grass Root Football Agency\n";
         $content .= "Image Reference: " . $player['image_url'] . "\n";
         $content .= "\nReport Generated: " . date("Y-m-d H:i:s") . "\n";
 

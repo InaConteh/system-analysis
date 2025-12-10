@@ -35,7 +35,7 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | Football Agency</title>
+    <title>Login | Grass Root Football Agency</title>
     <link rel="stylesheet" href="css/style.css">
     <style>
         .auth-container {
@@ -86,7 +86,11 @@ $conn->close();
 <body>
     <header>
         <nav class="navbar">
-            <div class="logo">Football Agency</div>
+            <a href="index.php" class="logo">
+                <img src="images/grass_root_logo.png" alt="Grass Root Football Agency"
+                    style="height: 60px; vertical-align: middle; margin-right: 10px;">
+                Grass Root Football Agency
+            </a>
             <ul class="nav-links">
                 <li><a href="index.php">Home</a></li>
                 <li><a href="register.php">Register</a></li>
@@ -111,8 +115,8 @@ $conn->close();
         </form>
         <p>Don't have an account? <a href="register.php">Register here</a></p>
     </div>
-    <?php include 'footer.php'; ?>
-    <script src="main.js"></script>
+    <?php include 'includes/footer.php'; ?>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

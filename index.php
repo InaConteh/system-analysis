@@ -7,7 +7,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Football Agency | Home</title>
+    <title>Grass Root Football Agency | Home</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -15,7 +15,8 @@ session_start();
     <header>
         <nav class="navbar">
             <a href="index.php" class="logo">
-                <img src="images/logo.png" alt="LionSport Agency">
+                <img src="images/grass_root_logo.png" alt="Grass Root Football Agency" style="height: 80px;">
+                Grass Root Football Agency
             </a>
             <ul class="nav-links">
                 <li class="active-link"><a href="index.php">Home</a></li>
@@ -33,7 +34,7 @@ session_start();
     <main class="home-container">
         <section class="hero-section animate-on-scroll" style="background-image: url('images/stadium-bg.png');">
             <div class="hero-overlay">
-                <h1 class="animate-on-scroll delay-100">Shaping The Future of<br>Football careers</h1>
+                <h1 class="animate-on-scroll delay-100">Growing Sierra Leone Talent<br>Shaping The Future</h1>
                 <a href="players.php" class="cta-button animate-on-scroll delay-200">View players</a>
             </div>
         </section>

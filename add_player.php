@@ -65,8 +65,8 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Player | Football Agency</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Add Player | Grass Root Football Agency</title>
+    <link rel="stylesheet" href="css/style.css">
     <style>
         .form-container {
             max-width: 500px;
@@ -113,7 +113,11 @@ $conn->close();
 <body>
     <header>
         <nav class="navbar">
-            <div class="logo">Admin Panel</div>
+            <a href="index.php" class="logo">
+                <img src="images/grass_root_logo.png" alt="Grass Root Football Agency"
+                    style="height: 60px; vertical-align: middle; margin-right: 10px;">
+                Admin Panel
+            </a>
             <ul class="nav-links">
                 <li><a href="players.php">Back to List</a></li>
             </ul>
@@ -149,8 +153,8 @@ $conn->close();
             <button type="submit" class="btn">Add Player</button>
         </form>
     </div>
-    <?php include 'footer.php'; ?>
-    <script src="main.js"></script>
+    <?php include 'includes/footer.php'; ?>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

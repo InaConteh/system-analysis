@@ -33,7 +33,7 @@ $result = $conn->query($sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Players Directory | Football Agency</title>
+    <title>Players Directory | Grass Root Football Agency</title>
     <link rel="stylesheet" href="css/style.css?v=<?php echo time(); ?>">
 
 </head>
@@ -41,7 +41,10 @@ $result = $conn->query($sql);
 <body>
     <header>
         <nav class="navbar">
-            <div class="logo">Football Agency</div>
+            <a href="index.php" class="logo">
+                <img src="images/grass_root_logo.png" alt="Grass Root Football Agency" style="height: 60px; vertical-align: middle; margin-right: 10px;">
+                Grass Root Football Agency
+            </a>
             <ul class="nav-links">
                 <li><a href="index.php">Home</a></li>
                 <li class="active-link"><a href="players.php">Players</a></li>

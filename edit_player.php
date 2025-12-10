@@ -157,7 +157,7 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Player | Football Agency</title>
+    <title>Edit Player | Grass Root Football Agency</title>
     <link rel="stylesheet" href="css/style.css">
     <style>
         .form-container {
@@ -229,7 +229,11 @@ $conn->close();
 <body>
     <header>
         <nav class="navbar">
-            <div class="logo">Admin Panel</div>
+            <a href="index.php" class="logo">
+                <img src="images/grass_root_logo.png" alt="Grass Root Football Agency"
+                    style="height: 60px; vertical-align: middle; margin-right: 10px;">
+                Admin Panel
+            </a>
             <ul class="nav-links">
                 <li><a href="players.php">Back to List</a></li>
             </ul>

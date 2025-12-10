@@ -38,14 +38,18 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contract Details | <?php echo htmlspecialchars($player['name']); ?></title>
+    <title>Contract Details | <?php echo htmlspecialchars($player['name']); ?> | Grass Root Football Agency</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
     <header>
         <nav class="navbar">
-            <div class="logo">Football Agency</div>
+            <a href="index.php" class="logo">
+                <img src="images/grass_root_logo.png" alt="Grass Root Football Agency"
+                    style="height: 60px; vertical-align: middle; margin-right: 10px;">
+                Grass Root Football Agency
+            </a>
             <ul class="nav-links">
                 <li><a href="index.php">Home</a></li>
                 <li><a href="players.php">Players</a></li>
