@@ -1,4 +1,6 @@
-# Pinacle Football Agency Management System
+# Grass Root Football Agency Management System
+
+**Theme:** Growing Sierra Leone Talent - Shaping The Future
 
 A dynamic web application for managing a football agency's player directory, contracts, and recruiting. Built with PHP, MySQL, CSS (Vanilla), and JavaScript.
 
@@ -7,17 +9,17 @@ A dynamic web application for managing a football agency's player directory, con
 ### 🌟 Public Features
 
 - **Dynamic Player Directory**: View all represented players with real-time data.
-- **Player Details**: Individual contract pages (`contract.php`) showing specific stats, club info, and highlights.
+- **Player Details**: Individual contract pages (`contract.php`) showing specific stats, club info, market value, and **Video Highlights**.
 - **User Authentication**: Secure Login and Registration system for fans/scouts.
 - **Responsive Design**: Mobile-friendly layout with smooth scroll animations.
-- **Downloadable Reports**: Generate and download text summaries for any player.
+- **Downloadable Reports**: Generate and download comprehensive text summaries for any player, including Agent and Market details.
 
 ### 🛡 Admin Features (Role-Based Access)
 
 - **Dashboard Access**: Special admin privileges.
 - **Player Management**:
   - **Add Player**: Upload photos, set nationality, club, and age.
-  - **Edit Player**: Update details and change images instantly.
+  - **Edit Player**: Update details, change images, and **Manage Video Highlights** (Upload MP4s or add YouTube links).
   - **Delete Player**: Remove records from the database.
 - **Image Uploads**: Real file handling for player profile pictures.
 
@@ -37,13 +39,13 @@ A dynamic web application for managing a football agency's player directory, con
 
     - Open **phpMyAdmin**.
     - Create a database named `football_agency_db`.
-    - Import the `schema.sql` file provided in this folder.
+    - Import the `sql/schema.sql` file provided in this folder.
     - **Crucial Step**: Run the update script to ensure all columns exist:
       - Access: `http://localhost/football_agency/update_schema.php`
 
 3.  **Database Configuration**:
 
-    - Open `db_connect.php`.
+    - Open `includes/db_connect.php`.
     - Verify credentials (default XAMPP is User: `root`, Pass: `[blank]`).
 
 4.  **Admin Account Setup**:
@@ -53,37 +55,21 @@ A dynamic web application for managing a football agency's player directory, con
       - Email: `admin@agency.com`
       - Password: `AdminSecret123!`
 
-## 📖 Usage Guide
+## 📁 File Structure (Updated)
 
-### Logging In
-
-- Navigate to `login.php`.
-- Enter your credentials.
-- Admins will see extra controls (Add/Edit/Delete) on the `players.php` page.
-
-### Managing Players (Admin Only)
-
-- **Add**: Click "Add New Player" on the top of the Players Directory. Fill in the form and upload an image.
-- **Edit**: Click the "Edit" button on any player card. modify details or upload a new photo. Changes reflect immediately.
-
-### Downloading Reports
-
-- Go to any player's contract page.
-- Click the **⬇ Download Report** icon in the header.
-- A `.txt` file with the player's profile will be downloaded.
-
-## 📁 File Structure
-
-- `index.php`: Homepage with animations.
+- **`css/`**: Contains `style.css` (Main stylesheet).
+- **`js/`**: Contains `main.js` (Animations and interactions).
+- **`includes/`**: Reusable PHP components (`db_connect.php`, `footer.php`).
+- **`sql/`**: Database schema files.
+- **`images/`**: Player photos and the **Grass Root Logo**.
+- `index.php`: Homepage with "Growing Sierra Leone Talent" theme.
 - `players.php`: Main directory (Role-protected).
 - `contract.php`: Dynamic individual player page.
 - `admin_setup.php`: Script to generate admin user.
-- `update_schema.php`: Script to update DB table structure.
-- `uploads/`: Directory where player images are stored.
-- `style.css`: Main stylesheet.
-- `main.js`: Scroll animations and interactions.
+- `add_player.php` / `edit_player.php`: Admin management pages.
+- `uploads/`: Directory where player images and video highlights are stored.
 
 ## 🎨 Credits
 
 - **Design**: Custom polished UI with glassmorphism and sticky navigation.
-- **Animations**: CSS3 & Intersection Observer API.
+- **Branding**: **Grass Root Football Agency** - Focusing on nurturing local talent.
