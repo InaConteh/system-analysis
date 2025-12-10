@@ -14,7 +14,9 @@ session_start();
 <body>
     <header>
         <nav class="navbar">
-            <div class="logo">Football Agency</div>
+            <a href="index.php" class="logo">
+                <img src="images/logo.png" alt="LionSport Agency">
+            </a>
             <ul class="nav-links">
                 <li class="active-link"><a href="index.php">Home</a></li>
                 <li><a href="players.php">Players</a></li>
@@ -29,7 +31,7 @@ session_start();
     </header>
 
     <main class="home-container">
-        <section class="hero-section animate-on-scroll" style="background-image: url('stadium-bg.jpg');">
+        <section class="hero-section animate-on-scroll" style="background-image: url('images/stadium-bg.png');">
             <div class="hero-overlay">
                 <h1 class="animate-on-scroll delay-100">Shaping The Future of<br>Football careers</h1>
                 <a href="players.php" class="cta-button animate-on-scroll delay-200">View players</a>

@@ -18,8 +18,12 @@ if ($is_admin && isset($_GET['delete_id'])) {
     exit();
 }
 
-// Fetch Players
+// Fetch Players with Filter
+$filter_status = isset($_GET['status']) ? $_GET['status'] : '';
 $sql = "SELECT * FROM players";
+if ($filter_status) {
+    $sql .= " WHERE market_status = '$filter_status'";
+}
 $result = $conn->query($sql);
 ?>
 
@@ -30,38 +34,8 @@ $result = $conn->query($sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Players Directory | Football Agency</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        .admin-controls {
-            margin-top: 10px;
-        }
+    <link rel="stylesheet" href="style.css?v=<?php echo time(); ?>">
 
-        .btn-delete {
-            background-color: #dc3545;
-            color: white;
-            padding: 5px 10px;
-            text-decoration: none;
-            border-radius: 4px;
-            font-size: 0.9em;
-        }
-
-        .btn-edit {
-            background-color: #ffc107;
-            color: black;
-            padding: 5px 10px;
-            text-decoration: none;
-            border-radius: 4px;
-            font-size: 0.9em;
-            margin-right: 5px;
-        }
-
-        .player-directory-card {
-            display: block;
-            /* Ensure it behaves like a block for the link */
-            color: inherit;
-            text-decoration: none;
-        }
-    </style>
 </head>
 
 <body>
@@ -80,6 +54,25 @@ $result = $conn->query($sql);
     <main class="players-directory-container">
         <h2 class="animate-on-scroll">Players Directory</h2>
 
+        <form method="GET" action="players.php" style="margin-bottom: 20px;">
+            <label for="status">Filter by Status:</label>
+            <select name="status" id="status" onchange="this.form.submit()">
+                <option value="">All</option>
+                <option value="Free Agent" <?php if ($filter_status == 'Free Agent')
+                    echo 'selected'; ?>>Free Agent
+                </option>
+                <option value="For Sale" <?php if ($filter_status == 'For Sale')
+                    echo 'selected'; ?>>For Sale</option>
+                <option value="For Loan" <?php if ($filter_status == 'For Loan')
+                    echo 'selected'; ?>>For Loan</option>
+                <option value="Sold" <?php if ($filter_status == 'Sold')
+                    echo 'selected'; ?>>Sold</option>
+                <option value="Unavailable" <?php if ($filter_status == 'Unavailable')
+                    echo 'selected'; ?>>Unavailable
+                </option>
+            </select>
+        </form>
+
         <?php if ($is_admin): ?>
             <div style="margin: 20px 0;">
                 <a href="add_player.php" class="cta-button">Add New Player</a>
@@ -97,6 +90,10 @@ $result = $conn->query($sql);
                     echo '<h3>' . htmlspecialchars($row["name"]) . '</h3>';
                     echo '<p>' . htmlspecialchars($row["club"]) . '</p>';
                     echo '<p>Age: ' . htmlspecialchars($row["age"]) . '</p>';
+                    echo '<p>Status: <strong>' . htmlspecialchars($row["market_status"]) . '</strong></p>';
+                    if ($row["market_status"] == 'For Sale' || $row["market_status"] == 'For Loan') {
+                        echo '<p>Value: $' . number_format($row["market_value"]) . '</p>';
+                    }
                     echo '</a>';
 
                     if ($is_admin) {

@@ -18,7 +18,14 @@ if ($id) {
         $content .= "Club: " . $player['club'] . "\n";
         $content .= "Age: " . $player['age'] . "\n";
         $content .= "Nationality: " . ($player['nationality'] ?? 'Unknown') . "\n";
-        $content .= "Image: " . $player['image_url'] . "\n";
+        $content .= "Market Status: " . $player['market_status'] . "\n";
+        if ($player['market_status'] == 'For Sale' || $player['market_status'] == 'For Loan') {
+            $content .= "Market Value: $" . number_format($player['market_value']) . "\n";
+        }
+        $content .= "Contract Start: " . ($player['contract_start'] ? date("d/m/Y", strtotime($player['contract_start'])) : '--') . "\n";
+        $content .= "Contract End: " . ($player['contract_end'] ? date("d/m/Y", strtotime($player['contract_end'])) : '--') . "\n";
+        $content .= "Agent: Football Agency\n";
+        $content .= "Image Reference: " . $player['image_url'] . "\n";
         $content .= "\nReport Generated: " . date("Y-m-d H:i:s") . "\n";
 
         header('Content-Type: text/plain');
