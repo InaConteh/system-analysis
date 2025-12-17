@@ -160,65 +160,12 @@ $conn->close();
     <title>Edit Player | Football Agency</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        .form-container {
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box; /* Fix padding issues */
-        }
-
-        .btn {
-            width: 100%;
-            padding: 10px;
-            background: #ffc107;
-            color: black;
-            border: none;
-            cursor: pointer;
-            border-radius: 4px;
-            font-weight: bold;
-        }
-
-        .btn:hover {
-            background: #e0a800;
-        }
-        
-        .btn-delete {
-            background: #dc3545;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 3px;
-            cursor: pointer;
-        }
-        .btn-delete:hover {
-            background: #c82333;
-        }
-
+        /* Inline styles removed in favor of style.css */
         .current-img {
-            display: block;
-            width: 100px;
+            max-width: 150px;
             margin-top: 10px;
             border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
@@ -239,7 +186,7 @@ $conn->close();
             echo "<p style='color:red;'>$message</p>"; ?>
         <?php if (isset($_GET['msg']))
             echo "<p style='color:green;'>" . htmlspecialchars($_GET['msg']) . "</p>"; ?>
-        
+
         <form method="POST" action="" enctype="multipart/form-data">
             <input type="hidden" name="update_player" value="1">
             <div class="form-group">
@@ -252,7 +199,8 @@ $conn->close();
             </div>
             <div class="form-group">
                 <label>Nationality</label>
-                <input type="text" name="nationality" value="<?php echo htmlspecialchars($player['nationality'] ?? ''); ?>" required>
+                <input type="text" name="nationality"
+                    value="<?php echo htmlspecialchars($player['nationality'] ?? ''); ?>" required>
             </div>
             <div class="form-group">
                 <label>Age</label>
@@ -275,56 +223,63 @@ $conn->close();
             </div>
             <div class="form-group">
                 <label>Market Value ($)</label>
-                <input type="number" name="market_value" value="<?php echo htmlspecialchars($player['market_value']); ?>" step="0.01">
+                <input type="number" name="market_value"
+                    value="<?php echo htmlspecialchars($player['market_value']); ?>" step="0.01">
             </div>
 
             <div class="form-group" style="display: flex; gap: 10px;">
                 <div style="flex: 1;">
                     <label>Contract Start</label>
-                    <input type="date" name="contract_start" value="<?php echo htmlspecialchars($player['contract_start']); ?>">
+                    <input type="date" name="contract_start"
+                        value="<?php echo htmlspecialchars($player['contract_start']); ?>">
                 </div>
                 <div style="flex: 1;">
                     <label>Contract End</label>
-                    <input type="date" name="contract_end" value="<?php echo htmlspecialchars($player['contract_end']); ?>">
+                    <input type="date" name="contract_end"
+                        value="<?php echo htmlspecialchars($player['contract_end']); ?>">
                 </div>
             </div>
             <div class="form-group">
                 <label>Current Image</label>
                 <?php if ($player['image_url']): ?>
-                        <img src="<?php echo htmlspecialchars($player['image_url']); ?>" class="current-img">
+                    <img src="<?php echo htmlspecialchars($player['image_url']); ?>" class="current-img">
                 <?php else: ?>
-                        <p>No image set.</p>
+                    <p>No image set.</p>
                 <?php endif; ?>
                 <label style="margin-top:10px;">Change Image (Leave blank to keep current)</label>
                 <input type="file" name="image" accept="image/*">
             </div>
-            <button type="submit" class="btn">Update Player</button>
+            <button type="submit" class="btn btn-warning">Update Player</button>
         </form>
 
         <!-- Video Management Section -->
         <div style="margin-top: 30px; border-top: 2px solid #eee; padding-top: 20px;">
             <h3>Video Highlights</h3>
-            
+
             <!-- List existing videos -->
             <?php if ($videos_result->num_rows > 0): ?>
-                    <?php while ($vid = $videos_result->fetch_assoc()): ?>
-                            <div style="background: #f9f9f9; padding: 10px; margin-bottom: 5px; display: flex; justify-content: space-between; align-items: center; border-radius: 4px;">
-                                <span style="font-size: 0.9em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 350px;">
-                                    <?php echo htmlspecialchars($vid['video_url']); ?>
-                                </span>
-                                <form method="POST" style="margin:0;">
-                                    <input type="hidden" name="delete_video_id" value="<?php echo $vid['id']; ?>">
-                                    <button type="submit" class="btn-delete" onclick="return confirm('Are you sure?');">Delete</button>
-                                </form>
-                            </div>
-                    <?php endwhile; ?>
+                <?php while ($vid = $videos_result->fetch_assoc()): ?>
+                    <div
+                        style="background: #f9f9f9; padding: 10px; margin-bottom: 5px; display: flex; justify-content: space-between; align-items: center; border-radius: 4px;">
+                        <span
+                            style="font-size: 0.9em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 350px;">
+                            <?php echo htmlspecialchars($vid['video_url']); ?>
+                        </span>
+                        <form method="POST" style="margin:0;">
+                            <input type="hidden" name="delete_video_id" value="<?php echo $vid['id']; ?>">
+                            <button type="submit" class="btn btn-danger" style="width: auto; padding: 5px 15px;"
+                                onclick="return confirm('Are you sure?');">Delete</button>
+                        </form>
+                    </div>
+                <?php endwhile; ?>
             <?php else: ?>
-                    <p>No videos added.</p>
+                <p>No videos added.</p>
             <?php endif; ?>
 
             <!-- Add New Video Form -->
             <h4 style="margin-top: 20px;">Add New Video</h4>
-            <form method="POST" action="" enctype="multipart/form-data" style="background: #f1f1f1; padding: 15px; border-radius: 8px;">
+            <form method="POST" action="" enctype="multipart/form-data"
+                style="background: #f1f1f1; padding: 15px; border-radius: 8px;">
                 <div class="form-group">
                     <label>Video URL (YouTube/External)</label>
                     <input type="text" name="new_video_url" placeholder="https://youtube.com/...">
@@ -333,7 +288,7 @@ $conn->close();
                     <label>OR Upload Video File (MP4, WebM)</label>
                     <input type="file" name="video_file" accept="video/*">
                 </div>
-                <button type="submit" class="btn" style="background-color: #28a745;">Add Video</button>
+                <button type="submit" class="btn btn-success">Add Video</button>
             </form>
         </div>
     </div>
@@ -341,4 +296,5 @@ $conn->close();
     <?php include 'footer.php'; ?>
     <script src="main.js"></script>
 </body>
+
 </html>

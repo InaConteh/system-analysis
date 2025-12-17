@@ -57,4 +57,84 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
+
+    // --- Enhanced Hero Features ---
+    
+    // 1. Stats Counter Animation
+    const statsContainer = document.querySelector('.hero-stats');
+    const statNumbers = document.querySelectorAll('.stat-number');
+    
+    if (statsContainer && statNumbers.length > 0) {
+        let activated = false;
+        
+        const startCounting = () => {
+            statNumbers.forEach(stat => {
+                const target = +stat.getAttribute('data-target');
+                const duration = 2000; // 2 seconds
+                const increment = target / (duration / 16); // 60fps
+                
+                let current = 0;
+                const updateCount = () => {
+                    current += increment;
+                    if (current < target) {
+                        stat.textContent = Math.ceil(current);
+                        requestAnimationFrame(updateCount);
+                    } else {
+                        stat.textContent = target + (stat.nextElementSibling.innerText.includes('Rate') ? '%' : '+');
+                    }
+                };
+                updateCount();
+            });
+        };
+
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !activated) {
+                    startCounting();
+                    activated = true;
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        statsObserver.observe(statsContainer);
+    }
+
+    // 2. Parallax Mouse Effect
+    const heroSection = document.querySelector('.enhanced-hero');
+    const particles = document.querySelectorAll('.particle');
+    const footballs = document.querySelectorAll('.football-icon');
+    
+    if (heroSection) {
+        heroSection.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            // Move particles slightly
+            particles.forEach((particle, index) => {
+                const speed = (index + 1) * 2;
+                const xOffset = (x - 0.5) * speed * 10;
+                const yOffset = (y - 0.5) * speed * 10;
+                particle.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+            });
+            
+            // Move footballs more noticeably (opposite direction)
+            footballs.forEach((ball, index) => {
+                const speed = (index + 1) * 5;
+                const xOffset = -(x - 0.5) * speed * 2;
+                const yOffset = -(y - 0.5) * speed * 2;
+                ball.style.transform = `translate(${xOffset}px, ${yOffset}px) rotate(${xOffset}deg)`;
+            });
+        });
+    }
+
+    // 3. Scroll Down Indicator
+    const scrollArrow = document.querySelector('.scroll-indicator');
+    if (scrollArrow) {
+        scrollArrow.addEventListener('click', () => {
+            const nextSection = heroSection.nextElementSibling;
+            if (nextSection) {
+                nextSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
 });

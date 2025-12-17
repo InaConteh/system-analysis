@@ -9,7 +9,8 @@
             <ul>
                 <li><a href="index.php">Home</a></li>
                 <li><a href="players.php">Players</a></li>
-                <li><a href="contract.php">Contract</a></li>
+                <li><a href="about.php">About</a></li>
+                <li><a href="contact.php">Contact</a></li>
                 <li><a href="login.php">Login</a></li>
             </ul>
         </div>

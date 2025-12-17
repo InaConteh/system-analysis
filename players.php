@@ -41,11 +41,14 @@ $result = $conn->query($sql);
 <body>
     <header>
         <nav class="navbar">
-            <div class="logo">Football Agency</div>
+            <a href="index.php" class="logo">
+                <img src="images/logo.png" alt="LionSport Agency">
+            </a>
             <ul class="nav-links">
                 <li><a href="index.php">Home</a></li>
                 <li class="active-link"><a href="players.php">Players</a></li>
-                <li><a href="contract.php">Contract</a></li>
+                <li><a href="about.php">About</a></li>
+                <li><a href="contact.php">Contact</a></li>
                 <li><a href="logout.php">Logout (<?php echo htmlspecialchars($_SESSION['username']); ?>)</a></li>
             </ul>
         </nav>
